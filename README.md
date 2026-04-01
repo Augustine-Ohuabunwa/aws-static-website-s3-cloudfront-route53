@@ -142,28 +142,22 @@ It leverages:
 
 ## 📸 Screenshots
 
-| Component  | Preview                         |
-| ---------- | ------------------------------- |
-| S3 Bucket  | ![](screenshots/s3.png)         |
-| CloudFront | ![](screenshots/cloudfront.png) |
-| Route 53   | ![](screenshots/route53.png)    |
-| Live Site  | ![](screenshots/output.png)     |
-
 ### S3 bucket configuration
 <p align="center">
   <img src="screenshots/S3 bucket configuration1.png" width="700"/>
 </p>
----
+
 ### CloudFront Distribution
 <p align="center">
   <img src="screenshots/CloudFront distribution2.png" width="700"/>
 </p>
----
+
 ### Route 53 records
 <p align="center">
   <img src="screenshots/Route 53 records.png" width="700"/>
 </p>
 ---
+
 ### Browser output
 <p align="center">
   <img src="screenshots/Browser output.png" width="700"/>
