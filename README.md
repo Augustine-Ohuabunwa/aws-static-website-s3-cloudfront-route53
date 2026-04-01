@@ -156,13 +156,13 @@ It leverages:
 <p align="center">
   <img src="screenshots/Route 53 records.png" width="700"/>
 </p>
----
+
 
 ### Browser output
 <p align="center">
   <img src="screenshots/Browser output.png" width="700"/>
 </p>
----
+
 
 ## 🧠 Key Learnings
 
@@ -196,5 +196,4 @@ It leverages:
 
 ## 👤 Author
 
-**Augustine Ohuabunwa**
-Cloud Engineer | DevOps Enthusiast
+Static Website Hosting Project by: [Augustine Ebere Ohuabunwa] Solution Architect | DBA | AWS Certified | Cost Optimization, Automation & Security | Enterprise Systemst
