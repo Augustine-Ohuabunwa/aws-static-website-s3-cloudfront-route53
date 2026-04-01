@@ -27,9 +27,7 @@ It leverages:
 ---
 
 ## 🏗️ Architecture Diagram
-
 ![Architecture](screenshots/architecture.png)
-
 ### 🔄 Request Flow
 
 1. User sends request to domain
