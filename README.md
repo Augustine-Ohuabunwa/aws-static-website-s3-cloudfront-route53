@@ -124,12 +124,6 @@ It leverages:
 
 ---
 
-## 🌍 Live Demo
-
-👉 https://ausfrane.com
-
----
-
 ## 🔐 Security Deep Dive
 
 | Layer      | Protection                   |
