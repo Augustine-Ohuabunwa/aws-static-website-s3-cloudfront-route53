@@ -47,6 +47,10 @@ It leverages:
 | Amazon Route 53         | Domain + DNS routing     |
 | AWS Certificate Manager | SSL/TLS certificates     |
 
+<p align="center">
+  <img src="screenshots/s3.png" width="700"/>
+</p>
+
 ---
 
 ## 🚀 Key Features (What Makes This Stand Out)
