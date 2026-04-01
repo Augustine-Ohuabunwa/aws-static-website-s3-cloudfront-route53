@@ -151,7 +151,7 @@ It leverages:
 
 ### S3 bucket configuration
 <p align="center">
-  <img src="screenshots/S3 bucket configuration2.png" width="700"/>
+  <img src="screenshots/S3 bucket configuration1.png" width="700"/>
 </p>
 ---
 
