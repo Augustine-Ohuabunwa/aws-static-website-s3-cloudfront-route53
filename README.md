@@ -152,6 +152,10 @@ It leverages:
 | Route 53   | ![](screenshots/route53.png)    |
 | Live Site  | ![](screenshots/output.png)     |
 
+### S3 bucket configuration
+<p align="center">
+  <img src="screenshots/s3.png" width="700"/>
+</p>
 ---
 
 ## 🧠 Key Learnings
