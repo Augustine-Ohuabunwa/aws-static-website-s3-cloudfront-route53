@@ -99,22 +99,18 @@ It leverages:
   ]
 }
 
-----
+**### 3. CloudFront Configuration**
 
-### 3. CloudFront Configuration
+-Origin: S3 website endpoint
+-Default root object: index.html
+-Viewer protocol: Redirect HTTP → HTTPS
+-Cache invalidation performed (/*)
 
-- **Origin:** S3 website endpoint  
-- **Default root object:** `index.html`  
-- **Viewer protocol:** Redirect HTTP → HTTPS  
-- **Cache invalidation performed:** `/*`
+4. Route 53 DNS Routing
+Created A (Alias) record
+Routed domain → CloudFront distribution
+🌍 Live Demo
 
-
-### 4. Route 53 DNS Routing
-
-- Created **A (Alias) record**
-- Routed domain → CloudFront distribution
-
-### 🌍 Live Demo
 👉 https://ausfrane.com
 
 🔐 Security Deep Dive
