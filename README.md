@@ -47,9 +47,6 @@ It leverages:
 | Amazon Route 53         | Domain + DNS routing     |
 | AWS Certificate Manager | SSL/TLS certificates     |
 
-<p align="center">
-  <img src="screenshots/s3.png" width="700"/>
-</p>
 
 ---
 
@@ -154,7 +151,7 @@ It leverages:
 
 ### S3 bucket configuration
 <p align="center">
-  <img src="screenshots/s3.png" width="700"/>
+  <img src="screenshots/S3-Bucket.png" width="700"/>
 </p>
 ---
 
