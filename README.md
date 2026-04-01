@@ -108,7 +108,6 @@ It leverages:
 - **Viewer protocol:** Redirect HTTP → HTTPS  
 - **Cache invalidation performed:** `/*`
 
----
 
 ### 4. Route 53 DNS Routing
 
