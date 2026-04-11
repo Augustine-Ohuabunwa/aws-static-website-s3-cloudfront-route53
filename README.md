@@ -137,7 +137,7 @@ This project implements a **secure, serverless, edge-optimized architecture** us
 
 ### 3️⃣ Disable Static Website Hosting
 
-- Go to **Properties**  
+- Navigate to **Properties**  
 - Disable static hosting  
 
 ---
@@ -164,82 +164,3 @@ This project implements a **secure, serverless, edge-optimized architecture** us
     }
   ]
 }
-```
-
----
-
-### 5️⃣ Create CloudFront Distribution
-Origin: S3 bucket
-Viewer protocol: Redirect HTTP → HTTPS
-Attach ACM certificate
-Enable caching
----
-
-### 6️⃣ Configure CloudFront
-Set default root object: index.html
-Create cache invalidation:
-/*
----
-
-### 7️⃣ Configure Route 53
-Create hosted zone: ausfrane.com
-Create A (Alias) record → CloudFront
----
-
-### 8️⃣ Access Website
-https://ausfrane.com
-🔐 Security Architecture
-Layer	Protection
-CloudFront	AWS Shield (DDoS protection)
-HTTPS	TLS encryption
-S3	Private bucket
-IAM	Least privilege
----
-
-### 📸 Screenshots
-S3 Bucket
-<p align="center"> <img src="screenshots/s3-bucket.png" width="700"/> </p>
-Upload
-<p align="center"> <img src="screenshots/upload.png" width="700"/> </p>
-CloudFront
-<p align="center"> <img src="screenshots/cloudfront.png" width="700"/> </p>
-Route 53
-<p align="center"> <img src="screenshots/route53.png" width="700"/> </p>
-Output
-<p align="center"> <img src="screenshots/output.png" width="700"/> </p>
----
-### 🧠 Key Learnings
-CDN reduces latency significantly
-Private S3 improves security
-CloudFront enhances performance + protection
-Route 53 enables reliable DNS routing
-Edge caching improves efficiency
----
-### 📈 Future Improvements
-🔒 Implement full OAC
-🛡️ Add AWS WAF
-⚙️ Terraform automation
-🔄 CI/CD with GitHub Actions
-📊 CloudWatch monitoring
----
-### 📂 Project Structure
-project-root/
-├── index.html
-├── screenshots/
-└── README.md
----
-### 👨‍💻 Author
-
-Augustine Ebere Ohuabunwa
-Static Website Hosting Project by: [Augustine Ebere Ohuabunwa] Solution Architect | DBA | AWS Certified | Cost Optimization, Automation & Security | Enterprise Systems
----
-
-### 📜 License
-
-Educational and real-world implementation use.
-
-⭐ Final Note
-🌍 Global scalability
-🔐 Secure architecture
-⚡ High performance
-📈 Enterprise-ready design
