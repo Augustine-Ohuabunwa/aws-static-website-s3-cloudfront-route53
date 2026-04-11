@@ -67,54 +67,14 @@ This project implements a **secure, serverless, edge-optimized architecture** us
 
 ---
 
-## 🌍 Real-World Relevance
+## ⚙️ Tech Stack
 
-- 🌐 Enterprise websites  
-- 🛒 E-commerce platforms  
-- 🚀 SaaS frontends  
-- 📱 Web applications  
-- 🏢 Internal portals  
-
----
-
-## 📊 Business Impact
-
-- ⚡ **60–80% latency reduction**  
-- 🌍 Global edge delivery  
-- 🔄 High availability architecture  
-- 🔐 HTTPS + DDoS protection  
-- 📉 ~80% reduction in operational overhead  
-
----
-
-## 💼 Business Value
-
-- 🚀 Faster deployments  
-- 💰 Cost efficiency  
-- 📈 Scalable architecture  
-- 🔐 Improved security posture  
-- 👨‍💻 Increased productivity  
-
----
-
-## 🎯 Key Features
-
-### 🌍 Global CDN Delivery
-- Edge caching via CloudFront  
-- Low latency worldwide  
-
-### 🔐 Security
-- Private S3 bucket  
-- HTTPS enforcement  
-- AWS Shield protection  
-
-### ⚡ High Availability
-- Fully serverless  
-- No single point of failure  
-
-### 📦 Cost Optimization
-- Pay-as-you-go  
-- Reduced origin requests  
+| Service                 | Purpose                  |
+| ----------------------- | ------------------------ |
+| Amazon S3               | Static file hosting      |
+| Amazon CloudFront       | CDN + caching + security |
+| Amazon Route 53         | Domain + DNS routing     |
+| AWS Certificate Manager | SSL/TLS certificates     |
 
 ---
 
@@ -168,10 +128,10 @@ This project implements a **secure, serverless, edge-optimized architecture** us
 
 ---
 ### 5️⃣ Create CloudFront Distribution
-Origin: S3 bucket
-Viewer protocol: Redirect HTTP → HTTPS
-Attach ACM certificate
-Enable caching
+- Origin: S3 bucket
+- Viewer protocol: Redirect HTTP → HTTPS
+- Attach ACM certificate
+- Enable caching
 
 ---
 ### 6️⃣ Configure CloudFront
@@ -185,13 +145,13 @@ Set default root object: index.html
 ---
 ### 7️⃣ Configure Route 53
 
-Create hosted zone: ausfrane.com
+- Create hosted zone: ausfrane.com
 
-Create record:
+- Create record:
 
-Type: A (Alias)
+- Type: A (Alias)
 
-Target: CloudFront distribution
+- Target: CloudFront distribution
 
 ---
 
@@ -199,15 +159,15 @@ Target: CloudFront distribution
 https://ausfrane.com
 
 ## 🔐 Security Architecture
-Layer	Protection
+- Layer	Protection
 
-CloudFront	AWS Shield (DDoS protection)
+- CloudFront	AWS Shield (DDoS protection)
 
-HTTPS	TLS encryption
+- HTTPS	TLS encryption
 
-S3	Private bucket
+- S3	Private bucket
 
-IAM	Least privilege
+- IAM	Least privilege
 
 ---
 
@@ -223,16 +183,69 @@ Route 53
 Output
 <p align="center"> <img src="screenshots/output.png" width="700"/> </p>
 ---
+
+## 📊 Business Impact
+
+- ⚡ **60–80% latency reduction**  
+- 🌍 Global edge delivery  
+- 🔄 High availability architecture  
+- 🔐 HTTPS + DDoS protection  
+- 📉 ~80% reduction in operational overhead  
+
+---
+
+## 💼 Business Value
+
+- 🚀 Faster deployments  
+- 💰 Cost efficiency  
+- 📈 Scalable architecture  
+- 🔐 Improved security posture  
+- 👨‍💻 Increased productivity  
+
+---
+
+## 🎯 Key Features
+
+### 🌍 Global CDN Delivery
+- Edge caching via CloudFront  
+- Low latency worldwide  
+
+### 🔐 Security
+- Private S3 bucket  
+- HTTPS enforcement  
+- AWS Shield protection  
+
+### ⚡ High Availability
+- Fully serverless  
+- No single point of failure  
+
+### 📦 Cost Optimization
+- Pay-as-you-go  
+- Reduced origin requests  
+
+---
+
+## 🌍 Real-World Relevance
+
+- 🌐 Enterprise websites  
+- 🛒 E-commerce platforms  
+- 🚀 SaaS frontends  
+- 📱 Web applications  
+- 🏢 Internal portals
+
+---
+
 ## 🧠 Key Learnings
-CDN reduces latency significantly
 
-Private S3 improves security
+- CDN reduces latency significantly
 
-CloudFront enhances performance and protection
+- Private S3 improves security
 
-Route 53 enables reliable DNS routing
+- CloudFront enhances performance and protection
 
-Edge caching improves efficiency
+- Route 53 enables reliable DNS routing
+
+- Edge caching improves efficiency
 
 ---
 
@@ -263,7 +276,6 @@ project-root/
 
 
 Static Website Hosting Project by: [Augustine Ebere Ohuabunwa] Solution Architect | DBA | AWS Certified | 
-
 Cost Optimization, Automation & Security | Enterprise Systems
 
 ---
