@@ -2,11 +2,6 @@
 
 **S3 + CloudFront + Route 53 + HTTPS + Edge Security**
 
-![AWS](https://img.shields.io/badge/AWS-CloudFront%20%7C%20S3%20%7C%20Route53-orange)
-![Architecture](https://img.shields.io/badge/Architecture-Global%20Serverless-blue)
-![Security](https://img.shields.io/badge/Security-HTTPS%20%7C%20DDoS%20Protection-green)
-![Status](https://img.shields.io/badge/Project-Production--Ready-success)
-
 ---
 
 ## 📌 Overview
@@ -15,10 +10,10 @@ This project implements a **secure, scalable, and globally distributed static we
 
 It leverages:
 
-- **Amazon S3** for object storage  
-- **Amazon CloudFront** for global content delivery  
-- **Amazon Route 53** for DNS routing  
-- **AWS Certificate Manager (ACM)** for HTTPS encryption  
+* **Amazon S3** for object storage
+* **Amazon CloudFront** for global content delivery
+* **Amazon Route 53** for DNS routing
+* **AWS Certificate Manager (ACM)** for HTTPS encryption
 
 ---
 
@@ -57,22 +52,143 @@ This architecture aligns with the **AWS Well-Architected Framework**, ensuring:
 - Performance Efficiency  
 - Cost Optimization  
 
----
+--- 
+## 🏗️ Architecture Diagram
+![Architecture](screenshots/architecture.png)
+### 🔄 Request Flow
 
-## 🌍 Real-World Relevance
-
-This architecture is widely adopted in production environments for:
-
-- 🌐 Corporate and enterprise websites  
-- 🛒 E-commerce frontend platforms  
-- 🚀 SaaS landing pages and applications  
-- 📱 Mobile/web frontend delivery  
-- 🏢 Internal enterprise portals  
-
-It reflects how organizations implement **edge computing and CDN strategies** to deliver fast, secure, and scalable applications globally.
+1. User sends request to domain
+2. DNS resolution via Route 53
+3. Request routed to CloudFront edge location
+4. CloudFront fetches content from S3 origin
+5. Content cached and delivered globally
 
 ---
 
+## ⚙️ Tech Stack
+
+| Service                 | Purpose                  |
+| ----------------------- | ------------------------ |
+| Amazon S3               | Static file hosting      |
+| Amazon CloudFront       | CDN + caching + security |
+| Amazon Route 53         | Domain + DNS routing     |
+| AWS Certificate Manager | SSL/TLS certificates     |
+
+
+---
+
+## 🚀 Key Features (What Makes This Stand Out)
+
+### 🌍 Global Content Delivery
+
+* Content cached at **CloudFront edge locations**
+* Reduced latency for global users
+
+### 🔐 End-to-End Security
+
+* HTTPS enforced using ACM certificate
+* CloudFront provides **AWS Shield Standard (DDoS protection)**
+
+### ⚡ High Availability
+
+* Fully serverless architecture
+* No single point of failure
+
+### 📦 Cost Optimization
+
+* Pay-as-you-go pricing
+* Efficient caching reduces origin requests
+
+---
+
+## 🛠️ Implementation Breakdown
+
+### 1. Domain & SSL Setup
+
+* Registered domain: **ausfrane.com**
+* Created ACM certificate (us-east-1)
+* Attached certificate to CloudFront
+
+---
+
+### 2. S3 Static Website Hosting
+
+* Bucket: `eldijove123`
+* Enabled static hosting
+* Uploaded `index.html`
+
+#### Bucket Policy
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicRead",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::eldijove123/*"
+    }
+  ]
+}
+```
+
+---
+
+### 3. CloudFront Configuration
+
+* **Origin:** S3 website endpoint
+* **Default root object:** `index.html`
+* **Viewer protocol:** Redirect HTTP → HTTPS
+* **Cache invalidation performed:** `/*`
+
+---
+
+### 4. Route 53 DNS Routing
+
+* Created **A (Alias) record**
+* Routed domain → CloudFront distribution
+
+---
+
+## 🔐 Security Deep Dive
+
+| Layer      | Protection                   |
+| ---------- | ---------------------------- |
+| CloudFront | AWS Shield (DDoS protection) |
+| HTTPS      | TLS encryption               |
+| DNS        | Route 53 managed routing     |
+
+### ⚠️ Production Enhancements (Planned)
+
+* AWS WAF integration
+* Private S3 bucket + Origin Access Control (OAC)
+
+---
+
+## 📸 Screenshots
+
+### S3 bucket configuration
+<p align="center">
+  <img src="screenshots/S3 bucket configuration1.png" width="700"/>
+</p>
+
+### CloudFront Distribution
+<p align="center">
+  <img src="screenshots/CloudFront distribution2.png" width="700"/>
+</p>
+
+### Route 53 records
+<p align="center">
+  <img src="screenshots/Route 53 records.png" width="700"/>
+</p>
+
+
+### Browser output
+<p align="center">
+  <img src="screenshots/Browser output.png" width="700"/>
+</p>
 ## 📊 Business Impact
 
 This solution delivers measurable improvements in performance, reliability, and efficiency:
@@ -115,153 +231,50 @@ This architecture provides tangible value to organizations:
   - Frees engineering teams from infrastructure management  
 
 ---
+## 🌍 Real-World Relevance
 
-## 🎯 Project Objectives
+This architecture is widely adopted in production environments for:
 
-- Deliver static content with **low latency worldwide**  
-- Enforce **secure HTTPS communication**  
-- Provide **resilience against DDoS attacks**  
-- Demonstrate **production-grade cloud architecture**  
+- 🌐 Corporate and enterprise websites  
+- 🛒 E-commerce frontend platforms  
+- 🚀 SaaS landing pages and applications  
+- 📱 Mobile/web frontend delivery  
+- 🏢 Internal enterprise portals  
 
----
-
-## 🏗️ Architecture Diagram
-
-<p align="center">
-  <img src="screenshots/architecture.png" width="750"/>
-</p>
+It reflects how organizations implement **edge computing and CDN strategies** to deliver fast, secure, and scalable applications globally.
 
 ---
 
-## 🔄 Request Flow
+## 🧠 Key Learnings
 
-1. User sends request to domain  
-2. DNS resolution via Route 53  
-3. Request routed to nearest CloudFront edge location  
-4. CloudFront fetches content from S3 origin  
-5. Content cached and delivered globally  
-
----
-
-## ⚙️ Tech Stack
-
-| Service                 | Purpose                  |
-|------------------------|--------------------------|
-| Amazon S3              | Static file hosting      |
-| Amazon CloudFront      | CDN + caching + security |
-| Amazon Route 53        | Domain + DNS routing     |
-| AWS Certificate Manager| SSL/TLS certificates     |
+* Difference between **S3 website endpoint vs REST endpoint**
+* Importance of **CloudFront in DDoS mitigation**
+* DNS routing using **Route 53 alias records**
+* Cache invalidation strategies in CDN systems
 
 ---
 
-## 🚀 Key Features
+## 📈 Future Improvements
 
-### 🌍 Global Content Delivery
-- Cached at CloudFront edge locations  
-- Low latency for global users  
-
-### 🔐 End-to-End Security
-- HTTPS enforced via ACM  
-- AWS Shield Standard (DDoS protection)  
-
-### ⚡ High Availability
-- Fully serverless architecture  
-- No single point of failure  
-
-### 📦 Cost Optimization
-- Pay-as-you-go pricing  
-- Reduced origin requests via caching  
+* 🔒 Implement **Origin Access Control (OAC)** (remove public S3 access)
+* 🛡️ Add **AWS WAF rules**
+* ⚙️ Automate deployment using **Terraform**
+* 🔄 CI/CD pipeline using GitHub Actions
+* 📊 Monitoring via CloudWatch
 
 ---
 
-## 🛠️ Implementation Breakdown
+## 📂 Project Structure
 
-### 1️⃣ Domain & SSL Setup
-
-- Domain: **ausfrane.com**  
-- ACM certificate created (us-east-1)  
-- Attached to CloudFront distribution  
-
----
-
-### 2️⃣ S3 Static Website Hosting
-
-- Bucket: `eldijove123`  
-- Enabled static hosting  
-- Uploaded `index.html`  
-
-#### Bucket Policy
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicRead",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::eldijove123/*"
-    }
-  ]
-}
-3️⃣ CloudFront Configuration
-Origin: S3 website endpoint
-Default root object: index.html
-Viewer protocol: Redirect HTTP → HTTPS
-Cache invalidation: /*
-4️⃣ Route 53 DNS Routing
-Created A (Alias) record
-Routed domain → CloudFront
-🔐 Security Deep Dive
-Layer	Protection
-CloudFront	AWS Shield (DDoS protection)
-HTTPS	TLS encryption
-DNS	Route 53 managed routing
-⚠️ Production Enhancements
-Implement Origin Access Control (OAC)
-Add AWS WAF rules
-Remove public S3 access
-📸 Screenshots
-S3 Bucket Configuration
-<p align="center"> <img src="screenshots/S3 bucket configuration1.png" width="700"/> </p>
-CloudFront Distribution
-<p align="center"> <img src="screenshots/CloudFront distribution2.png" width="700"/> </p>
-Route 53 Records
-<p align="center"> <img src="screenshots/Route 53 records.png" width="700"/> </p>
-Browser Output
-<p align="center"> <img src="screenshots/Browser output.png" width="700"/> </p>
-🧠 Key Learnings
-Difference between S3 website endpoint vs REST endpoint
-Importance of CloudFront in performance and DDoS mitigation
-DNS routing using Route 53 alias records
-CDN caching and invalidation strategies
-📈 Future Improvements
-🔒 Implement Origin Access Control (OAC)
-🛡️ Add AWS WAF
-⚙️ Automate using Terraform
-🔄 CI/CD pipeline with GitHub Actions
-📊 Monitoring via CloudWatch
-📂 Project Structure
+```
 .
 ├── README.md
 ├── screenshots/
-├── terraform/ (optional IaC)
-👤 Author
+├── terraform/   (optional IaC)
+```
 
-Augustine Ebere Ohuabunwa
-Solutions Architect | AWS Certified | DBA
-Cloud • Security • Automation • Cost Optimization
+---
 
-📜 License
+## 👤 Author
 
-This project is for educational, demonstration, and real-world implementation purposes.
-
-⭐ Final Note
-
-This project demonstrates a real-world, enterprise-grade cloud architecture used by modern organizations to deliver:
-
-🌍 Global performance
-🔐 Secure web applications
-📈 Scalable infrastructure
-⚡ High availability
+Static Website Hosting Project by: [Augustine Ebere Ohuabunwa] Solution Architect | DBA | AWS Certified | Cost Optimization, Automation & Security | Enterprise Systemst
