@@ -167,29 +167,44 @@ This project implements a **secure, serverless, edge-optimized architecture** us
 ```
 
 ---
-5️⃣ Create CloudFront Distribution
+### 5️⃣ Create CloudFront Distribution
 Origin: S3 bucket
 Viewer protocol: Redirect HTTP → HTTPS
 Attach ACM certificate
 Enable caching
-6️⃣ Configure CloudFront
+---
+### 6️⃣ Configure CloudFront
 Set default root object: index.html
-Create cache invalidation:
+---
+### 6️⃣ Create cache invalidation:
 /*
-7️⃣ Configure Route 53
+---
+### 7️⃣ Configure Route 53
 Create hosted zone: ausfrane.com
+
 Create record:
+
 Type: A (Alias)
+
 Target: CloudFront distribution
-8️⃣ Access Website
+---
+
+### 8️⃣ Access Website
 https://ausfrane.com
-🔐 Security Architecture
+
+## 🔐 Security Architecture
 Layer	Protection
+
 CloudFront	AWS Shield (DDoS protection)
+
 HTTPS	TLS encryption
+
 S3	Private bucket
+
 IAM	Least privilege
-📸 Screenshots
+---
+
+##📸 Screenshots
 S3 Bucket
 <p align="center"> <img src="screenshots/s3-bucket.png" width="700"/> </p>
 Upload
@@ -200,33 +215,45 @@ Route 53
 <p align="center"> <img src="screenshots/route53.png" width="700"/> </p>
 Output
 <p align="center"> <img src="screenshots/output.png" width="700"/> </p>
-🧠 Key Learnings
+---
+## 🧠 Key Learnings
 CDN reduces latency significantly
+
 Private S3 improves security
+
 CloudFront enhances performance and protection
+
 Route 53 enables reliable DNS routing
+
 Edge caching improves efficiency
-📈 Future Improvements
+---
+
+### 📈 Future Improvements
 🔒 Implement full OAC
 🛡️ Add AWS WAF
 ⚙️ Automate deployment using Terraform
 🔄 CI/CD with GitHub Actions
 📊 Monitoring with CloudWatch
-📂 Project Structure
+---
+## 📂 Project Structure
+```
 project-root/
 ├── index.html
 ├── screenshots/
 └── README.md
-👨‍💻 Author
+```
+---
+### 👨‍💻 Author
 
-Augustine Ebere Ohuabunwa
-Solutions Architect | AWS Certified | DBA
+Static Website Hosting Project by: [Augustine Ebere Ohuabunwa] Solution Architect | DBA | AWS Certified | Cost Optimization, Automation & Security | Enterprise Systems
+---
 
-📜 License
+### 📜 License
 
 This project is for educational and real-world implementation purposes.
+---
 
-⭐ Final Note
+### ⭐ Final Note
 🌍 Global scalability
 🔐 Secure architecture
 ⚡ High performance
