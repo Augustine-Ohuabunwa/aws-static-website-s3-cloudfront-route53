@@ -20,8 +20,6 @@ It leverages:
 - **Amazon Route 53** for DNS routing  
 - **AWS Certificate Manager (ACM)** for HTTPS encryption  
 
-This architecture reflects **real-world enterprise cloud design**, focusing on performance, security, and scalability.
-
 ---
 
 ## ❗ Problem Statement
@@ -33,8 +31,6 @@ Organizations hosting web applications globally often face:
 - ❌ Lack of protection against DDoS attacks  
 - ❌ Complex infrastructure scaling challenges  
 - ❌ Poor content delivery performance  
-
-Traditional hosting approaches fail to provide **low latency, high availability, and strong security simultaneously**.
 
 ---
 
@@ -67,61 +63,57 @@ This project implements a **secure, serverless, edge-optimized architecture** us
 2. Route 53 resolves DNS request  
 3. Request routed to nearest CloudFront edge location  
 4. CloudFront fetches content from private S3 bucket  
-5. Content cached and delivered globally with low latency  
+5. Content cached and delivered globally  
 
 ---
 
 ## 🌍 Real-World Relevance
 
-This architecture is widely used for:
-
 - 🌐 Enterprise websites  
 - 🛒 E-commerce platforms  
 - 🚀 SaaS frontends  
-- 📱 Web and mobile applications  
-- 🏢 Internal enterprise portals  
-
-It represents **modern cloud-native and edge delivery architecture**.
+- 📱 Web applications  
+- 🏢 Internal portals  
 
 ---
 
 ## 📊 Business Impact
 
-- ⚡ **Latency Reduction:** Up to **60–80% faster delivery**  
-- 🌍 **Global Performance:** Content served from nearest edge location  
-- 🔄 **High Availability:** Distributed infrastructure ensures uptime  
-- 🔐 **Enhanced Security:** HTTPS + DDoS protection  
-- 📉 **Operational Efficiency:** ~80% reduction in infrastructure management  
+- ⚡ **60–80% latency reduction**  
+- 🌍 Global edge delivery  
+- 🔄 High availability architecture  
+- 🔐 HTTPS + DDoS protection  
+- 📉 ~80% reduction in operational overhead  
 
 ---
 
 ## 💼 Business Value
 
-- 🚀 Faster time-to-market  
-- 💰 Reduced infrastructure cost  
-- 📈 Scalable for growth  
+- 🚀 Faster deployments  
+- 💰 Cost efficiency  
+- 📈 Scalable architecture  
 - 🔐 Improved security posture  
-- 👨‍💻 Increased engineering productivity  
+- 👨‍💻 Increased productivity  
 
 ---
 
 ## 🎯 Key Features
 
 ### 🌍 Global CDN Delivery
-- Low latency worldwide  
 - Edge caching via CloudFront  
+- Low latency worldwide  
 
 ### 🔐 Security
 - Private S3 bucket  
-- HTTPS enforced  
+- HTTPS enforcement  
 - AWS Shield protection  
 
 ### ⚡ High Availability
-- Serverless architecture  
+- Fully serverless  
 - No single point of failure  
 
 ### 📦 Cost Optimization
-- Pay-as-you-go pricing  
+- Pay-as-you-go  
 - Reduced origin requests  
 
 ---
@@ -131,28 +123,26 @@ It represents **modern cloud-native and edge delivery architecture**.
 ### 1️⃣ Create S3 Bucket
 
 - Create bucket: `ausfrane.com`  
-- Enable:
-  - Versioning  
-  - Bucket Key  
-- Enable **Block Public Access** (keep bucket private)  
+- Enable versioning and bucket key  
+- Enable **Block Public Access**
 
 ---
 
 ### 2️⃣ Upload Website Files
 
 - Upload `index.html`  
-- Verify file exists in bucket  
+- Confirm file exists  
 
 ---
 
 ### 3️⃣ Disable Static Website Hosting
 
-- Navigate to **Properties**  
-- Disable static website hosting  
+- Go to **Properties**  
+- Disable static hosting  
 
 ---
 
-### 4️⃣ Configure Bucket Policy (CloudFront Access)
+### 4️⃣ Configure Bucket Policy
 
 ```json
 {
@@ -174,63 +164,51 @@ It represents **modern cloud-native and edge delivery architecture**.
     }
   ]
 }
----
-### 5️⃣ Create CloudFront Distribution
+5️⃣ Create CloudFront Distribution
 Origin: S3 bucket
-Origin type: Amazon S3
 Viewer protocol: Redirect HTTP → HTTPS
 Attach ACM certificate
 Enable caching
----
-### 6️⃣ Configure CloudFront
-Set Default Root Object: index.html
+6️⃣ Configure CloudFront
+Set default root object: index.html
 Create cache invalidation:
 /*
----
-### 7️⃣ Configure Route 53
+7️⃣ Configure Route 53
 Create hosted zone: ausfrane.com
-Create record:
-Type: A (Alias)
-Target: CloudFront distribution
----
-### 8️⃣ Access Website
-
-Open:
-
+Create A (Alias) record → CloudFront
+8️⃣ Access Website
 https://ausfrane.com
----
 🔐 Security Architecture
 Layer	Protection
 CloudFront	AWS Shield (DDoS protection)
 HTTPS	TLS encryption
 S3	Private bucket
-IAM	Least privilege access
+IAM	Least privilege
 📸 Screenshots
-S3 Bucket Configuration
+S3 Bucket
 <p align="center"> <img src="screenshots/s3-bucket.png" width="700"/> </p>
-File Upload
+Upload
 <p align="center"> <img src="screenshots/upload.png" width="700"/> </p>
-CloudFront Distribution
+CloudFront
 <p align="center"> <img src="screenshots/cloudfront.png" width="700"/> </p>
-Route 53 Configuration
+Route 53
 <p align="center"> <img src="screenshots/route53.png" width="700"/> </p>
-Live Website
+Output
 <p align="center"> <img src="screenshots/output.png" width="700"/> </p>
 🧠 Key Learnings
-Importance of CDN in reducing latency
-Difference between public vs private S3 access
-CloudFront as a security and performance layer
-DNS routing using Route 53
-Edge caching strategies
+CDN reduces latency significantly
+Private S3 improves security
+CloudFront enhances performance + protection
+Route 53 enables reliable DNS routing
+Edge caching improves efficiency
 📈 Future Improvements
-🔒 Implement Origin Access Control (OAC fully)
-🛡️ Add AWS WAF rules
-⚙️ Automate deployment using Terraform
-🔄 CI/CD pipeline using GitHub Actions
-📊 Monitoring with CloudWatch
+🔒 Implement full OAC
+🛡️ Add AWS WAF
+⚙️ Terraform automation
+🔄 CI/CD with GitHub Actions
+📊 CloudWatch monitoring
 📂 Project Structure
 project-root/
-│
 ├── index.html
 ├── screenshots/
 └── README.md
@@ -238,17 +216,13 @@ project-root/
 
 Augustine Ebere Ohuabunwa
 Solutions Architect | AWS Certified | DBA
-Cloud • Security • Automation • Cost Optimization
 
 📜 License
 
-This project is for educational, demonstration, and real-world implementation purposes.
+Educational and real-world implementation use.
 
 ⭐ Final Note
-
-This project demonstrates a production-grade AWS architecture used in real enterprises to deliver:
-
 🌍 Global scalability
-🔐 Secure web applications
+🔐 Secure architecture
 ⚡ High performance
-📈 Reliable infrastructure
+📈 Enterprise-ready design
