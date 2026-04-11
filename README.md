@@ -174,7 +174,7 @@ It represents **modern cloud-native and edge delivery architecture**.
     }
   ]
 }
-________________________________________
+---
 5️⃣ Create CloudFront Distribution
 •	Origin: S3 bucket 
 •	Origin type: Amazon S3 
