@@ -171,7 +171,7 @@ https://ausfrane.com
 
 ---
 
-##📸 Screenshots
+## 📸 Screenshots
 S3 Bucket
 <p align="center"> <img src="screenshots/s3-bucket.png" width="700"/> </p>
 Upload
@@ -186,21 +186,21 @@ Output
 
 ## 📊 Business Impact
 
-- ⚡ **60–80% latency reduction**  
-- 🌍 Global edge delivery  
-- 🔄 High availability architecture  
-- 🔐 HTTPS + DDoS protection  
-- 📉 ~80% reduction in operational overhead  
+⚡ **60–80% latency reduction**  
+🌍 Global edge delivery  
+🔄 High availability architecture  
+🔐 HTTPS + DDoS protection  
+📉 ~80% reduction in operational overhead  
 
 ---
 
 ## 💼 Business Value
 
-- 🚀 Faster deployments  
-- 💰 Cost efficiency  
-- 📈 Scalable architecture  
-- 🔐 Improved security posture  
-- 👨‍💻 Increased productivity  
+🚀 Faster deployments  
+💰 Cost efficiency  
+📈 Scalable architecture  
+🔐 Improved security posture  
+👨‍💻 Increased productivity  
 
 ---
 
@@ -227,11 +227,11 @@ Output
 
 ## 🌍 Real-World Relevance
 
-- 🌐 Enterprise websites  
-- 🛒 E-commerce platforms  
-- 🚀 SaaS frontends  
-- 📱 Web applications  
-- 🏢 Internal portals
+ 🌐 Enterprise websites  
+ 🛒 E-commerce platforms  
+ 🚀 SaaS frontends  
+ 📱 Web applications  
+ 🏢 Internal portals
 
 ---
 
