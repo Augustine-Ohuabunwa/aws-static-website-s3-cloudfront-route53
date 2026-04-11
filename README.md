@@ -181,29 +181,31 @@ ________________________________________
 •	Viewer protocol: Redirect HTTP → HTTPS 
 •	Attach ACM certificate 
 •	Enable caching 
-________________________________________
+---
+
 6️⃣ Configure CloudFront
 •	Set Default Root Object: index.html 
 •	Create cache invalidation: 
 /*
-________________________________________
+---
+
 7️⃣ Configure Route 53
 •	Create hosted zone: ausfrane.com 
 •	Create record: 
 o	Type: A (Alias) 
 o	Target: CloudFront distribution 
-________________________________________
+---
 8️⃣ Access Website
 Open:
 https://ausfrane.com
-________________________________________
+---
 🔐 Security Architecture
 Layer	Protection
 CloudFront	AWS Shield (DDoS protection)
 HTTPS	TLS encryption
 S3	Private bucket
 IAM	Least privilege access
-________________________________________
+---
 📸 Screenshots
 S3 Bucket Configuration
 <p align="center"> <img src="screenshots/s3-bucket.png" width="700"/> </p> 
@@ -215,36 +217,36 @@ Route 53 Configuration
 <p align="center"> <img src="screenshots/route53.png" width="700"/> </p> 
 Live Website
 <p align="center"> <img src="screenshots/output.png" width="700"/> </p> 
-________________________________________
+---
 🧠 Key Learnings
 •	Importance of CDN in reducing latency 
 •	Difference between public vs private S3 access 
 •	CloudFront as a security and performance layer 
 •	DNS routing using Route 53 
 •	Edge caching strategies 
-________________________________________
+---
 📈 Future Improvements
 •	🔒 Implement Origin Access Control (OAC fully) 
 •	🛡️ Add AWS WAF rules 
 •	⚙️ Automate deployment using Terraform 
 •	🔄 CI/CD pipeline using GitHub Actions 
 •	📊 Monitoring with CloudWatch 
-________________________________________
+---
 📂 Project Structure
 project-root/
 │
 ├── index.html
 ├── screenshots/
 └── README.md
-________________________________________
+---
 👨‍💻 Author
 Augustine Ebere Ohuabunwa
 Solutions Architect | AWS Certified | DBA
 Cloud • Security • Automation • Cost Optimization
-________________________________________
+---
 📜 License
 This project is for educational, demonstration, and real-world implementation purposes.
-________________________________________
+---
 ⭐ Final Note
 This project demonstrates a production-grade AWS architecture used in real enterprises to deliver:
 •	🌍 Global scalability 
