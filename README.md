@@ -164,6 +164,10 @@ This project implements a **secure, serverless, edge-optimized architecture** us
     }
   ]
 }
+```
+
+---
+
 5️⃣ Create CloudFront Distribution
 Origin: S3 bucket
 Viewer protocol: Redirect HTTP → HTTPS
