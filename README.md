@@ -174,83 +174,76 @@ It represents **modern cloud-native and edge delivery architecture**.
     }
   ]
 }
-
----
 5️⃣ Create CloudFront Distribution
-•	Origin: S3 bucket 
-•	Origin type: Amazon S3 
-•	Viewer protocol: Redirect HTTP → HTTPS 
-•	Attach ACM certificate 
-•	Enable caching 
----
-
+Origin: S3 bucket
+Origin type: Amazon S3
+Viewer protocol: Redirect HTTP → HTTPS
+Attach ACM certificate
+Enable caching
 6️⃣ Configure CloudFront
-•	Set Default Root Object: index.html 
-•	Create cache invalidation: 
+Set Default Root Object: index.html
+Create cache invalidation:
 /*
----
-
 7️⃣ Configure Route 53
-•	Create hosted zone: ausfrane.com 
-•	Create record: 
-o	Type: A (Alias) 
-o	Target: CloudFront distribution 
----
+Create hosted zone: ausfrane.com
+Create record:
+Type: A (Alias)
+Target: CloudFront distribution
 8️⃣ Access Website
+
 Open:
+
 https://ausfrane.com
----
 🔐 Security Architecture
 Layer	Protection
 CloudFront	AWS Shield (DDoS protection)
 HTTPS	TLS encryption
 S3	Private bucket
 IAM	Least privilege access
----
 📸 Screenshots
 S3 Bucket Configuration
-<p align="center"> <img src="screenshots/s3-bucket.png" width="700"/> </p> 
+<p align="center"> <img src="screenshots/s3-bucket.png" width="700"/> </p>
 File Upload
-<p align="center"> <img src="screenshots/upload.png" width="700"/> </p> 
+<p align="center"> <img src="screenshots/upload.png" width="700"/> </p>
 CloudFront Distribution
-<p align="center"> <img src="screenshots/cloudfront.png" width="700"/> </p> 
+<p align="center"> <img src="screenshots/cloudfront.png" width="700"/> </p>
 Route 53 Configuration
-<p align="center"> <img src="screenshots/route53.png" width="700"/> </p> 
+<p align="center"> <img src="screenshots/route53.png" width="700"/> </p>
 Live Website
-<p align="center"> <img src="screenshots/output.png" width="700"/> </p> 
----
+<p align="center"> <img src="screenshots/output.png" width="700"/> </p>
 🧠 Key Learnings
-•	Importance of CDN in reducing latency 
-•	Difference between public vs private S3 access 
-•	CloudFront as a security and performance layer 
-•	DNS routing using Route 53 
-•	Edge caching strategies 
----
+Importance of CDN in reducing latency
+Difference between public vs private S3 access
+CloudFront as a security and performance layer
+DNS routing using Route 53
+Edge caching strategies
 📈 Future Improvements
-•	🔒 Implement Origin Access Control (OAC fully) 
-•	🛡️ Add AWS WAF rules 
-•	⚙️ Automate deployment using Terraform 
-•	🔄 CI/CD pipeline using GitHub Actions 
-•	📊 Monitoring with CloudWatch 
----
+🔒 Implement Origin Access Control (OAC fully)
+🛡️ Add AWS WAF rules
+⚙️ Automate deployment using Terraform
+🔄 CI/CD pipeline using GitHub Actions
+📊 Monitoring with CloudWatch
 📂 Project Structure
 project-root/
 │
 ├── index.html
 ├── screenshots/
 └── README.md
----
 👨‍💻 Author
+
 Augustine Ebere Ohuabunwa
 Solutions Architect | AWS Certified | DBA
 Cloud • Security • Automation • Cost Optimization
----
+
 📜 License
+
 This project is for educational, demonstration, and real-world implementation purposes.
----
+
 ⭐ Final Note
+
 This project demonstrates a production-grade AWS architecture used in real enterprises to deliver:
-•	🌍 Global scalability 
-•	🔐 Secure web applications 
-•	⚡ High performance 
-•	📈 Reliable infrastructure
+
+🌍 Global scalability
+🔐 Secure web applications
+⚡ High performance
+📈 Reliable infrastructure
