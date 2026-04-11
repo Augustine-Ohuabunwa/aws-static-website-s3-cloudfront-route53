@@ -77,6 +77,15 @@ This project implements a **secure, serverless, edge-optimized architecture** us
 | AWS Certificate Manager | SSL/TLS certificates     |
 
 ---
+## 📂 Project Structure
+
+```
+project-root/
+├── index.html
+├── screenshots/
+└── README.md
+```
+---
 
 ## ⚙️ Implementation Steps
 
@@ -262,15 +271,7 @@ Output
 📊 Monitoring with CloudWatch
 
 ---
-## 📂 Project Structure
 
-```
-project-root/
-├── index.html
-├── screenshots/
-└── README.md
-```
----
 
 ### 👨‍💻 Author
 
