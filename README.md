@@ -174,26 +174,31 @@ It represents **modern cloud-native and edge delivery architecture**.
     }
   ]
 }
-5️⃣ Create CloudFront Distribution
+---
+### 5️⃣ Create CloudFront Distribution
 Origin: S3 bucket
 Origin type: Amazon S3
 Viewer protocol: Redirect HTTP → HTTPS
 Attach ACM certificate
 Enable caching
-6️⃣ Configure CloudFront
+---
+### 6️⃣ Configure CloudFront
 Set Default Root Object: index.html
 Create cache invalidation:
 /*
-7️⃣ Configure Route 53
+---
+### 7️⃣ Configure Route 53
 Create hosted zone: ausfrane.com
 Create record:
 Type: A (Alias)
 Target: CloudFront distribution
-8️⃣ Access Website
+---
+### 8️⃣ Access Website
 
 Open:
 
 https://ausfrane.com
+---
 🔐 Security Architecture
 Layer	Protection
 CloudFront	AWS Shield (DDoS protection)
