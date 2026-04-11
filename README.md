@@ -172,14 +172,19 @@ Origin: S3 bucket
 Viewer protocol: Redirect HTTP → HTTPS
 Attach ACM certificate
 Enable caching
+
 ---
 ### 6️⃣ Configure CloudFront
 Set default root object: index.html
+
 ---
 ### 6️⃣ Create cache invalidation:
+
 /*
+
 ---
 ### 7️⃣ Configure Route 53
+
 Create hosted zone: ausfrane.com
 
 Create record:
@@ -187,6 +192,7 @@ Create record:
 Type: A (Alias)
 
 Target: CloudFront distribution
+
 ---
 
 ### 8️⃣ Access Website
@@ -202,6 +208,7 @@ HTTPS	TLS encryption
 S3	Private bucket
 
 IAM	Least privilege
+
 ---
 
 ##📸 Screenshots
@@ -226,16 +233,24 @@ CloudFront enhances performance and protection
 Route 53 enables reliable DNS routing
 
 Edge caching improves efficiency
+
 ---
 
 ### 📈 Future Improvements
+
 🔒 Implement full OAC
+
 🛡️ Add AWS WAF
+
 ⚙️ Automate deployment using Terraform
+
 🔄 CI/CD with GitHub Actions
+
 📊 Monitoring with CloudWatch
+
 ---
 ## 📂 Project Structure
+
 ```
 project-root/
 ├── index.html
@@ -243,18 +258,28 @@ project-root/
 └── README.md
 ```
 ---
+
 ### 👨‍💻 Author
 
-Static Website Hosting Project by: [Augustine Ebere Ohuabunwa] Solution Architect | DBA | AWS Certified | Cost Optimization, Automation & Security | Enterprise Systems
+
+Static Website Hosting Project by: [Augustine Ebere Ohuabunwa] Solution Architect | DBA | AWS Certified | 
+
+Cost Optimization, Automation & Security | Enterprise Systems
+
 ---
 
 ### 📜 License
 
 This project is for educational and real-world implementation purposes.
+
 ---
 
 ### ⭐ Final Note
+
 🌍 Global scalability
+
 🔐 Secure architecture
+
 ⚡ High performance
+
 📈 Enterprise-ready design
