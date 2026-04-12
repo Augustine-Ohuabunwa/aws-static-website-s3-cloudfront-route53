@@ -127,7 +127,7 @@ project-root/
       "Resource": "arn:aws:s3:::ausfrane.com/*",
       "Condition": {
         "StringEquals": {
-          "AWS:SourceArn": "arn:aws:cloudfront::<ACCOUNT_ID>:distribution/<DISTRIBUTION_ID>"
+          "AWS:SourceArn": "arn:aws:cloudfront::746669191736:distribution/E2EYQMT0NQK0W4"
         }
       }
     }
@@ -162,7 +162,7 @@ Set default root object: index.html
 
 - Target: CloudFront distribution
 
----
+
 
 ### 8️⃣ Access Website
 https://ausfrane.com
@@ -194,7 +194,7 @@ Route 53
 <p align="center"> <img src="screenshots/route531.png" width="700"/> </p>
 Output
 <p align="center"> <img src="screenshots/output.png" width="700"/> </p>
----
+
 
 ## 📊 Business Impact
 
