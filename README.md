@@ -187,8 +187,11 @@ Upload
 <p align="center"> <img src="screenshots/upload.png" width="700"/> </p>
 CloudFront
 <p align="center"> <img src="screenshots/cloudfront.png" width="700"/> </p>
+<p align="center"> <img src="screenshots/cloudfront1.png" width="700"/> </p>
+<p align="center"> <img src="screenshots/cloudfront2.png" width="700"/> </p>
 Route 53
 <p align="center"> <img src="screenshots/route53.png" width="700"/> </p>
+<p align="center"> <img src="screenshots/route531.png" width="700"/> </p>
 Output
 <p align="center"> <img src="screenshots/output.png" width="700"/> </p>
 ---
