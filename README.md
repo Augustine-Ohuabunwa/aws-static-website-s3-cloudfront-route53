@@ -261,9 +261,10 @@ Output
 
 ---
 
-```
 
-📁 Terraform Project Structure (Enterprise-Grade)
+## 📁 Terraform Project Structure (Enterprise-Grade)
+
+```
 
 terraform/
 │
@@ -289,6 +290,10 @@ terraform/
 │
 ├── provider.tf
 └── versions.tf
+
+```
+---
+
 ⚙️ versions.tf
 
 terraform {
@@ -306,7 +311,7 @@ terraform {
 ---
 
 
-🌍 provider.tf
+### 🌍 provider.tf
 
 ```provider "aws" {
   region = "us-east-1"
@@ -325,14 +330,18 @@ terraform {
 
 ---
 
-👉 You must create:
+### 👉 You must create:
 
 S3 bucket: ausfrane-terraform-state
+
 DynamoDB table: terraform-locks (Primary key: LockID)
 
-🧩 MODULE: S3 (modules/s3)
+### 🧩 MODULE: S3 (modules/s3)
+
 variables.tf
+
 variable "bucket_name" {}
+
 main.tf
 
 ```resource "aws_s3_bucket" "this" {
@@ -382,14 +391,19 @@ output "bucket_arn" {
 output "bucket_domain_name" {
   value = aws_s3_bucket.this.bucket_regional_domain_name
 }
+
 ```
 
 ---
 
-🌐 MODULE: CloudFront (modules/cloudfront)
+### 🌐 MODULE: CloudFront (modules/cloudfront)
+
 variables.tf
+
 variable "bucket_domain_name" {}
+
 variable "bucket_arn" {}
+
 main.tf
 
 ```resource "aws_cloudfront_origin_access_control" "oac" {
@@ -465,6 +479,7 @@ resource "aws_s3_bucket_policy" "policy" {
 ```
 
 ---
+
 outputs.tf
 
 ```output "distribution_domain_name" {
@@ -475,7 +490,7 @@ output "distribution_arn" {
   value = aws_cloudfront_distribution.this.arn
 }
 
-🌍 ENVIRONMENT: prod
+### 🌍 ENVIRONMENT: prod
 
 environments/prod/variables.tf
 
@@ -500,15 +515,19 @@ module "cloudfront" {
 
 ---
 
-🚀 Deployment Workflow
+### 🚀 Deployment Workflow
 
 cd terraform
 
 terraform init
+
 terraform plan
+
 terraform apply
 
-🔐 Enterprise Best Practices Implemented
+---
+
+### 🔐 Enterprise Best Practices Implemented
 
 ✅ State Management
 
