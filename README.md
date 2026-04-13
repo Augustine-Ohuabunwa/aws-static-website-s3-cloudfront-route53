@@ -343,7 +343,8 @@ terraform {
 
 - variables.tf
 
-```variable "bucket_name" {}
+```
+variable "bucket_name" {}
 
 ```
 ---
