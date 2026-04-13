@@ -287,6 +287,7 @@ terraform/
 ├── provider.tf
 └── versions.tf
 ⚙️ versions.tf
+
 terraform {
   required_version = ">= 1.5.0"
 
@@ -300,6 +301,8 @@ terraform {
 ```
 
 ---
+
+
 🌍 provider.tf
 provider "aws" {
   region = "us-east-1"
@@ -314,6 +317,9 @@ terraform {
     encrypt        = true
   }
 }
+```
+
+---
 
 👉 You must create:
 
@@ -370,6 +376,10 @@ output "bucket_arn" {
 output "bucket_domain_name" {
   value = aws_s3_bucket.this.bucket_regional_domain_name
 }
+```
+
+---
+
 🌐 MODULE: CloudFront (modules/cloudfront)
 variables.tf
 variable "bucket_domain_name" {}
@@ -444,6 +454,10 @@ resource "aws_s3_bucket_policy" "policy" {
     ]
   })
 }
+
+```
+
+---
 outputs.tf
 output "distribution_domain_name" {
   value = aws_cloudfront_distribution.this.domain_name
@@ -470,6 +484,11 @@ module "cloudfront" {
   bucket_domain_name  = module.s3.bucket_domain_name
   bucket_arn          = module.s3.bucket_arn
 }
+
+```
+
+---
+
 🚀 Deployment Workflow
 cd terraform
 
