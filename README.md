@@ -262,7 +262,9 @@ Output
 ---
 
 
-## 📁 Terraform Project Structure (Enterprise-Grade)
+## Terraform Implimentation
+
+### 📁 Project Structure (Enterprise-Grade)
 
 ```
 
@@ -306,6 +308,7 @@ terraform {
     }
   }
 }
+
 ```
 
 ---
@@ -332,17 +335,17 @@ terraform {
 
 ### 👉 You must create:
 
-S3 bucket: ausfrane-terraform-state
+- S3 bucket: ausfrane-terraform-state
 
-DynamoDB table: terraform-locks (Primary key: LockID)
+- DynamoDB table: terraform-locks (Primary key: LockID)
 
 ### 🧩 MODULE: S3 (modules/s3)
 
-variables.tf
+- variables.tf
 
 variable "bucket_name" {}
 
-main.tf
+- main.tf
 
 ```resource "aws_s3_bucket" "this" {
   bucket = var.bucket_name
@@ -404,7 +407,7 @@ variable "bucket_domain_name" {}
 
 variable "bucket_arn" {}
 
-main.tf
+- main.tf
 
 ```resource "aws_cloudfront_origin_access_control" "oac" {
   name                              = "ausfrane-oac"
@@ -480,7 +483,7 @@ resource "aws_s3_bucket_policy" "policy" {
 
 ---
 
-outputs.tf
+- outputs.tf
 
 ```output "distribution_domain_name" {
   value = aws_cloudfront_distribution.this.domain_name
@@ -489,6 +492,9 @@ outputs.tf
 output "distribution_arn" {
   value = aws_cloudfront_distribution.this.arn
 }
+
+```
+---
 
 ### 🌍 ENVIRONMENT: prod
 
@@ -517,13 +523,13 @@ module "cloudfront" {
 
 ### 🚀 Deployment Workflow
 
-cd terraform
+- cd terraform
 
-terraform init
+- terraform init
 
-terraform plan
+- terraform plan
 
-terraform apply
+- terraform apply
 
 ---
 
@@ -531,29 +537,31 @@ terraform apply
 
 ✅ State Management
 
-Remote backend (S3)
+- Remote backend (S3)
 
-State locking (DynamoDB)
+- State locking (DynamoDB)
 
 ✅ Modularity
 
-Reusable S3 module
+- Reusable S3 module
 
-Reusable CloudFront module
+- Reusable CloudFront module
 
 ✅ Security
 
-Private S3 bucket
+- Private S3 bucket
 
-OAC-based access
+- OAC-based access
 
-No public exposure
+- No public exposure
 
 ✅ Scalability
 
-Environment-based deployment
+- Environment-based deployment
 
-Easily extendable to dev/stage/prod
+- Easily extendable to dev/stage/prod
+
+---
 
 ### 📈 Future Improvements
 
