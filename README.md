@@ -343,7 +343,10 @@ terraform {
 
 - variables.tf
 
-variable "bucket_name" {}
+```variable "bucket_name" {}
+
+```
+---
 
 - main.tf
 
@@ -403,9 +406,11 @@ output "bucket_domain_name" {
 
 variables.tf
 
-variable "bucket_domain_name" {}
-
+```variable "bucket_domain_name" {}
 variable "bucket_arn" {}
+
+```
+---
 
 - main.tf
 
@@ -498,7 +503,7 @@ output "distribution_arn" {
 
 ### 🌍 ENVIRONMENT: prod
 
-environments/prod/variables.tf
+- environments/prod/variables.tf
 
 ```variable "bucket_name" {
   default = "ausfrane.com"
