@@ -261,6 +261,233 @@ Output
 
 ---
 
+📁 Project Structure (Enterprise-Grade)
+terraform/
+│
+├── backend/
+│   └── backend.tf
+│
+├── environments/
+│   └── prod/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── terraform.tfvars
+│
+├── modules/
+│   ├── s3/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   │
+│   └── cloudfront/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+│
+├── provider.tf
+└── versions.tf
+⚙️ versions.tf
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+🌍 provider.tf
+provider "aws" {
+  region = "us-east-1"
+}
+🗄️ backend/backend.tf (Remote State)
+terraform {
+  backend "s3" {
+    bucket         = "ausfrane-terraform-state"
+    key            = "static-site/prod/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+}
+
+👉 You must create:
+
+S3 bucket: ausfrane-terraform-state
+DynamoDB table: terraform-locks (Primary key: LockID)
+🧩 MODULE: S3 (modules/s3)
+variables.tf
+variable "bucket_name" {}
+main.tf
+resource "aws_s3_bucket" "this" {
+  bucket = var.bucket_name
+
+  tags = {
+    Name        = var.bucket_name
+    Environment = "Production"
+  }
+}
+
+resource "aws_s3_bucket_versioning" "versioning" {
+  bucket = aws_s3_bucket.this.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "enc" {
+  bucket = aws_s3_bucket.this.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "block" {
+  bucket = aws_s3_bucket.this.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+outputs.tf
+output "bucket_id" {
+  value = aws_s3_bucket.this.id
+}
+
+output "bucket_arn" {
+  value = aws_s3_bucket.this.arn
+}
+
+output "bucket_domain_name" {
+  value = aws_s3_bucket.this.bucket_regional_domain_name
+}
+🌐 MODULE: CloudFront (modules/cloudfront)
+variables.tf
+variable "bucket_domain_name" {}
+variable "bucket_arn" {}
+main.tf
+resource "aws_cloudfront_origin_access_control" "oac" {
+  name                              = "ausfrane-oac"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
+
+resource "aws_cloudfront_distribution" "this" {
+  enabled             = true
+  default_root_object = "index.html"
+
+  origin {
+    domain_name              = var.bucket_domain_name
+    origin_id                = "S3-origin"
+    origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
+  }
+
+  default_cache_behavior {
+    target_origin_id       = "S3-origin"
+    viewer_protocol_policy = "redirect-to-https"
+
+    allowed_methods = ["GET", "HEAD"]
+    cached_methods  = ["GET", "HEAD"]
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "policy" {
+  bucket = replace(var.bucket_arn, "arn:aws:s3:::", "")
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "AllowCloudFrontAccess"
+        Effect = "Allow"
+
+        Principal = {
+          Service = "cloudfront.amazonaws.com"
+        }
+
+        Action = "s3:GetObject"
+        Resource = "${var.bucket_arn}/*"
+
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = aws_cloudfront_distribution.this.arn
+          }
+        }
+      }
+    ]
+  })
+}
+outputs.tf
+output "distribution_domain_name" {
+  value = aws_cloudfront_distribution.this.domain_name
+}
+
+output "distribution_arn" {
+  value = aws_cloudfront_distribution.this.arn
+}
+🌍 ENVIRONMENT: prod
+environments/prod/variables.tf
+variable "bucket_name" {
+  default = "ausfrane.com"
+}
+environments/prod/terraform.tfvars
+bucket_name = "ausfrane.com"
+environments/prod/main.tf
+module "s3" {
+  source      = "../../modules/s3"
+  bucket_name = var.bucket_name
+}
+
+module "cloudfront" {
+  source              = "../../modules/cloudfront"
+  bucket_domain_name  = module.s3.bucket_domain_name
+  bucket_arn          = module.s3.bucket_arn
+}
+🚀 Deployment Workflow
+cd terraform
+
+terraform init
+terraform plan
+terraform apply
+🔐 Enterprise Best Practices Implemented
+✅ State Management
+Remote backend (S3)
+State locking (DynamoDB)
+✅ Modularity
+Reusable S3 module
+Reusable CloudFront module
+✅ Security
+Private S3 bucket
+OAC-based access
+No public exposure
+✅ Scalability
+Environment-based deployment
+Easily extendable to dev/stage/prod
+
 ### 📈 Future Improvements
 
 🔒 Implement full OAC
