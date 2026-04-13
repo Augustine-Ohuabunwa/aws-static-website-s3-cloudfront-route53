@@ -261,6 +261,8 @@ Output
 
 ---
 
+```
+
 📁 Project Structure (Enterprise-Grade)
 terraform/
 │
@@ -304,7 +306,8 @@ terraform {
 
 
 🌍 provider.tf
-provider "aws" {
+
+```provider "aws" {
   region = "us-east-1"
 }
 🗄️ backend/backend.tf (Remote State)
@@ -325,11 +328,13 @@ terraform {
 
 S3 bucket: ausfrane-terraform-state
 DynamoDB table: terraform-locks (Primary key: LockID)
+
 🧩 MODULE: S3 (modules/s3)
 variables.tf
 variable "bucket_name" {}
 main.tf
-resource "aws_s3_bucket" "this" {
+
+```resource "aws_s3_bucket" "this" {
   bucket = var.bucket_name
 
   tags = {
@@ -385,7 +390,8 @@ variables.tf
 variable "bucket_domain_name" {}
 variable "bucket_arn" {}
 main.tf
-resource "aws_cloudfront_origin_access_control" "oac" {
+
+```resource "aws_cloudfront_origin_access_control" "oac" {
   name                              = "ausfrane-oac"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
@@ -459,16 +465,20 @@ resource "aws_s3_bucket_policy" "policy" {
 
 ---
 outputs.tf
-output "distribution_domain_name" {
+
+```output "distribution_domain_name" {
   value = aws_cloudfront_distribution.this.domain_name
 }
 
 output "distribution_arn" {
   value = aws_cloudfront_distribution.this.arn
 }
+
 🌍 ENVIRONMENT: prod
+
 environments/prod/variables.tf
-variable "bucket_name" {
+
+```variable "bucket_name" {
   default = "ausfrane.com"
 }
 environments/prod/terraform.tfvars
@@ -490,24 +500,39 @@ module "cloudfront" {
 ---
 
 🚀 Deployment Workflow
+
 cd terraform
 
 terraform init
 terraform plan
 terraform apply
+
 🔐 Enterprise Best Practices Implemented
+
 ✅ State Management
+
 Remote backend (S3)
+
 State locking (DynamoDB)
+
 ✅ Modularity
+
 Reusable S3 module
+
 Reusable CloudFront module
+
 ✅ Security
+
 Private S3 bucket
+
 OAC-based access
+
 No public exposure
+
 ✅ Scalability
+
 Environment-based deployment
+
 Easily extendable to dev/stage/prod
 
 ### 📈 Future Improvements
