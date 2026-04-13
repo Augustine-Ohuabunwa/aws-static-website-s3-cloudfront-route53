@@ -263,7 +263,8 @@ Output
 
 ```
 
-📁 Project Structure (Enterprise-Grade)
+📁 Terraform Project Structure (Enterprise-Grade)
+
 terraform/
 │
 ├── backend/
