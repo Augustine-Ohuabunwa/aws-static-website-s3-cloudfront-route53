@@ -296,7 +296,7 @@ terraform/
 ```
 ---
 
-⚙️ versions.tf
+### ⚙️ versions.tf
 
 ```terraform {
   required_version = ">= 1.5.0"
@@ -404,7 +404,7 @@ output "bucket_domain_name" {
 
 ### 🌐 MODULE: CloudFront (modules/cloudfront)
 
-variables.tf
+- variables.tf
 
 ```variable "bucket_domain_name" {}
 variable "bucket_arn" {}
