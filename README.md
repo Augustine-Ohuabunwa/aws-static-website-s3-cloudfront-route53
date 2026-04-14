@@ -247,21 +247,6 @@ Output
 
 ---
 
-## 🧠 Key Learnings
-
-- CDN reduces latency significantly
-
-- Private S3 improves security
-
-- CloudFront enhances performance and protection
-
-- Route 53 enables reliable DNS routing
-
-- Edge caching improves efficiency
-
----
-
-
 ## Terraform Implimentation
 
 ### 📁 Project Structure (Enterprise-Grade)
@@ -569,13 +554,26 @@ module "cloudfront" {
 
 ---
 
+## 🧠 Key Learnings
+
+- CDN reduces latency significantly
+
+- Private S3 improves security
+
+- CloudFront enhances performance and protection
+
+- Route 53 enables reliable DNS routing
+
+- Edge caching improves efficiency
+
+---
+
+
 ### 📈 Future Improvements
 
 🔒 Implement full OAC
 
 🛡️ Add AWS WAF
-
-⚙️ Automate deployment using Terraform
 
 🔄 CI/CD with GitHub Actions
 
