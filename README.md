@@ -162,12 +162,16 @@ Set default root object: index.html
 
 - Target: CloudFront distribution
 
-
+---
 
 ### 8️⃣ Access Website
+
 https://ausfrane.com
 
+---
+
 ## 🔐 Security Architecture
+
 - Layer	Protection
 
 - CloudFront	AWS Shield (DDoS protection)
@@ -195,6 +199,7 @@ Route 53
 Output
 <p align="center"> <img src="screenshots/output.png" width="700"/> </p>
 
+---
 
 ## 📊 Business Impact
 
